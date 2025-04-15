@@ -1,0 +1,6 @@
+/refind-drivers-extra/
+/efi-fs-*/
+/.debhelper
+debhelper-build-stamp
+*.substvars
+files

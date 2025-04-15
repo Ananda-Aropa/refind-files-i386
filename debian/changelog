@@ -1,0 +1,5 @@
+refind-files-i386 (0.14.2-2.1) UNSTABLE; urgency=medium
+
+  * Initial release. (Closes: #nnnn)  <nnnn is the bug number of your ITP>
+
+ -- Shadichy <shadichy@blisslabs.org>  Tue, 15 Apr 2025 13:50:41 +0700

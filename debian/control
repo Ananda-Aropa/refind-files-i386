@@ -1,0 +1,21 @@
+Source: refind-files-i386
+Section: unknown
+Priority: optional
+Maintainer: Shadichy <shadichy@blisslabs.org>
+Rules-Requires-Root: no
+Build-Depends:
+ debhelper-compat (= 13),
+Standards-Version: 4.6.2
+Homepage: <insert the upstream URL, if relevant>
+#Vcs-Browser: https://salsa.debian.org/debian/refind-files-i386
+#Vcs-Git: https://salsa.debian.org/debian/refind-files-i386.git
+
+Package: refind-files-i386
+Architecture: amd64
+Multi-Arch: foreign
+Depends:
+ refind,
+ ${shlibs:Depends},
+ ${misc:Depends},
+Description: <insert up to 60 chars description>
+ <Insert long description, indented with spaces.>
