@@ -10,6 +10,8 @@ Acquire::AllowInsecureRepositories "true";
 Acquire::AllowDowngradeToInsecureRepositories "true";
 EOF
 
+sudo apt update
+
 sudo dpkg --add-architecture i386
 sudo apt download refind:i386
 
