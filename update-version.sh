@@ -20,3 +20,5 @@ upstream_version=$(ls refind_*.deb | awk -F '_' '{print $2}')
 sed -i -r "s/refind-files-i386 \([0-9]+(\.[0-9]+)+-[0-9]+(\.[0-9]+)?/refind-files-i386 ($upstream_version/g" debian/changelog
 
 dpkg-deb -x refind_*.deb refind
+
+rm -f refind_*.deb
