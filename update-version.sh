@@ -15,6 +15,8 @@ yes | sudo apt update -y --allow-unauthenticated
 
 yes | sudo apt download -y --allow-unauthenticated refind:i386
 
+ls refind_*.deb
+
 upstream_version=$(ls refind_*.deb | awk -F '_' '{print $2}')
 
 sed -i -r "s/refind-files-i386 \([0-9]+(\.[0-9]+)+-[0-9]+(\.[0-9]+)?/refind-files-i386 ($upstream_version/g" debian/changelog
