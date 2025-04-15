@@ -11,9 +11,9 @@ Acquire::AllowDowngradeToInsecureRepositories "true";
 EOF
 
 sudo dpkg --add-architecture i386
-sudo apt update
+yes | sudo apt update -y --allow-unauthenticated
 
-sudo apt download refind:i386
+yes | sudo apt download -y --allow-unauthenticated refind:i386
 
 upstream_version=$(ls refind_*.deb | awk -F '_' '{print $2}')
 
