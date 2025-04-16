@@ -1,3 +1,3 @@
-refind/usr/share/refind/refind/drivers_ia32 usr/share/refind
-refind/usr/share/refind/refind/tools_ia32 usr/share/refind
-refind/usr/share/refind/refind/refind_ia32.efi usr/share/refind
+refind/usr/share/refind/refind/drivers_ia32 usr/share/refind/refind
+refind/usr/share/refind/refind/tools_ia32 usr/share/refind/refind
+refind/usr/share/refind/refind/refind_ia32.efi usr/share/refind/refind
