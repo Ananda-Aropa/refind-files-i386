@@ -102,13 +102,6 @@ jobs:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
-      - name: Check out
-        uses: actions/checkout@v4
-
-      - name: Setup variables
-        run: |
-          echo "VERSION=$(cat VERSION | cut -d'v' -f2)" >>"$GITHUB_ENV"
-          echo "DATE=$(date -u +'%Y%m%d')" >>"$GITHUB_ENV"
 
       - name: Download artifacts
         id: download-artifacts
@@ -120,6 +113,14 @@ jobs:
 
       - name: List Files
         run: ls -R ${{ steps.download-artifacts.outputs.download-path }}
+
+      - name: Setup variables
+        run: |
+          pwd=$(pwd)
+          cd ${{ steps.download-artifacts.outputs.download-path }}
+          echo "VERSION=$(ls *.changes | head -1 | cut -d '_' -f 2 | cut -d '-' -f 1)" >>"$GITHUB_ENV"
+          echo "DATE=$(date -u +'%Y%m%d')" >>"$GITHUB_ENV"
+          cd $pwd
 
       - uses: "softprops/action-gh-release@v2.1.0"
         with:
