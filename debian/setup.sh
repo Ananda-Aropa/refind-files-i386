@@ -7,7 +7,7 @@ cd "$(dirname "$0")"
 DISTRO="${DISTRO:-unstable}"
 MAINTAINER=$(git log -1 --pretty=format:'%an <%ae>')
 
-echo "deb http://http.us.debian.org/debian unstable main contrib non-free" | sudo tee /etc/apt/sources.list
+echo "deb [trusted=yes] http://http.us.debian.org/debian unstable main contrib non-free" | sudo tee /etc/apt/sources.list
 
 cat <<EOF | sudo tee /etc/apt/apt.conf.d/999norecommend
 APT::Install-Recommends "0";
@@ -22,8 +22,8 @@ yes | sudo apt update -y --allow-unauthenticated
 
 yes | sudo apt download -y --allow-unauthenticated refind:i386
 
-VERSION=$(ls refind_*.deb | awk -F '_' '{print $2}')
-REVISION=${REVISION:-0}
+VERSION=$(ls refind_*.deb | cut -d '_' -f 2 | cut -d '-' -f 1)
+REVISION=$(ls refind_*.deb | cut -d '_' -f 2 | cut -d '-' -f 2)
 
 echo "v$VERSION" > ../VERSION
 PACKAGE_NAME=$(grep 'Source:' control | awk '{print $2}')
