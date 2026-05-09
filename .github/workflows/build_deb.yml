@@ -88,11 +88,11 @@ jobs:
           cd queue
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
+          git remote set-url --push origin https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/$QUEUE
           rm -rf ${REPO##*/}
           git add .
           git commit -m "Dequeue ${REPO}"
-          git remote set-url --push origin https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/$QUEUE
-          git push origin $BRANCH
+          while ! git push origin $BRANCH; do sleep 5; git fetch --no-tags origin $BRANCH; git rebase origin/$BRANCH; done
           cd ..
           rm -rf queue
 
