@@ -40,11 +40,11 @@ jobs:
           cd queue
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
-          touch ${REPO##*/}
-          git add ${REPO##*/}
-          git commit -m "Enqueue ${REPO}"
           git remote set-url --push origin https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/$QUEUE
-          git push origin $BRANCH
+          touch ${REPO##*/} &&
+          git add ${REPO##*/} &&
+          git commit -m "Enqueue ${REPO}" &&
+          git push origin $BRANCH || true
           cd ..
           rm -rf queue
 
